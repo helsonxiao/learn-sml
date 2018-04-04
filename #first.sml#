@@ -1,0 +1,32 @@
+(* This is my first program *)
+(* static environment is created before program runs *)
+(* after type checking, program will run in the dynamic environment *)
+
+val x = 34;
+(* static environment: x: int *)
+(* dynamic environment: x --> 34 *)
+
+val y = 17;
+(* static environment: x: int, y: int *)
+(* dynamic environment: x --> 34, y --> 17 *)
+
+val z = (x + y) + (y + 2);
+(* static environment: x: int, y: int, ... *)
+(* dynamic environment: x --> 34, y --> 17, ... *)
+
+val abs_of_z = if z < 0 then 0 - z else z;
+
+(*
+What is the syntax? What are the type-checking rules? What are the evaluation
+rules?
+
+Syntax:
+e1 < e2 where e1 and e2 are expressions.
+
+Type-checking:
+Type bool but only if e1 and e2 have type int in the static environment else doesn't type-check.
+
+Evaluation:
+evaluate e1 to v1 and e2 to v2 in the same dynamic environment and then produce true if v1 is less than v2 and false otherwise.
+*)
+
